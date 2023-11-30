@@ -1,9 +1,51 @@
-print("hello world")
-a=int(input("Podaj liczbe 1: "))
-b=int(input("Podaj liczbe 2: "))
-c=int(input("Podaj liczbe 3: "))
-d=int(input("Podaj liczbe 4: "))
-e=int(input("Podaj liczbe 5: "))
-f=int(input("Podaj liczbe 6: "))
-lista=(a,b,c,d,e,f)
-for i in range ()
+import random
+
+# powitanie
+print("Witaj w swiecie wisielca, podaj swoj nick: ")
+pseudonim = input()
+
+# lista hasel
+lista = ["szkola", "ksiazka", "warzywo", "owoce", "poduszka"]
+
+# haslo
+haslo = str(lista[random.randint(0, len(lista) - 1)])
+tablica = list(haslo)
+
+# tablica sluzy do wyswiatlania    
+for i in range(len(haslo)):
+    tablica[i] = "_"
+
+# zmienna reprezentujaca ilosc zyc
+zycia = 10
+
+# petla while, w ktorej bedzie realizowana gra
+while zycia > 0:
+    print("")
+    print(pseudonim, " pozostalo ci ", zycia, " zyc")
+    print("")
+    print(" ".join(tablica))
+    print(" ")
+
+    # prosimy uzytkownika o podanie litery
+    print("Podaj swoja litere: ")
+    litera = input()
+
+    # udalo sie odgadnac
+    if litera in haslo:
+        # zmieniamy znak podkreslenia na odgadnieta litere
+        for i in range(len(haslo)):
+            if haslo[i] == litera:
+                tablica[i] = litera
+        # sprawdzant czy tablica jest juz rowna haslu
+        # czy udalo sie odgadnac caly wyraz
+        if "".join(map(str, tablica)) == haslo:
+            print("")
+            print(pseudonim, " pozostalo ci ", zycia, " zyc")
+            print("")
+            print(" ".join(tablica))
+            print(" ")
+            print(pseudonim, " wygrales!")
+            break
+    # nie udalo sie
+    else:
+        zycia -= 1
